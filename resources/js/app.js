@@ -12,6 +12,9 @@ Vue.component('ErrorList', require('./Components/ErrorList.vue').default)
 import router from './router';
 import App from './Layouts/App.vue';
 
+import { Sketch } from 'vue-color';
+Vue.component('SketchPicker', Sketch);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

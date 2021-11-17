@@ -33,7 +33,7 @@ Route::post('/logout', [
     'name' => 'logout'
 ]);
 
-Route::post('/qr/generate', [
+Route::middleware('auth:sanctum')->post('/qr/generate', [
     'uses' => 'App\Http\Controllers\QRCodeController@generate',
-    'name' => 'logout'
+    'name' => 'qr.generate'
 ]);
