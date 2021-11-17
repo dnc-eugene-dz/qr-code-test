@@ -1,6 +1,6 @@
 # QR Code content app #
 
-## Installation
+## Installation on docker
 
 - clone the repository
 
