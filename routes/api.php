@@ -16,25 +16,30 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', [
     'uses' => 'App\Http\Controllers\UserController@getUserData',
-    'name' => 'user.data'
+    'name' => 'user.data',
+    'as' => 'user.data',
 ]);
 
 Route::post('/login', [
     'uses' => 'App\Http\Controllers\Auth\LoginController@authenticate',
-    'name' => 'login'
+    'name' => 'login',
+    'as' => 'login'
 ]);
 
 Route::post('/register', [
     'uses' => 'App\Http\Controllers\Auth\RegisterController@register',
-    'name' => 'register'
+    'name' => 'register',
+    'as' => 'register'
 ]);
 
 Route::post('/logout', [
     'uses' => 'App\Http\Controllers\Auth\LoginController@logout',
-    'name' => 'logout'
+    'name' => 'logout',
+    'as' => 'logout'
 ]);
 
 Route::middleware('auth:sanctum')->post('/qr/generate', [
     'uses' => 'App\Http\Controllers\QRCodeController@generate',
-    'name' => 'qr.generate'
+    'name' => 'qr.generate',
+    'as' => 'qr.generate'
 ]);
