@@ -1,43 +1,19 @@
 <template>
     <div>
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <router-link :to="{ name: 'qr' }" class="navbar-brand">
-                QR App
-            </router-link>
-            <button
-                class="navbar-toggler"
-                data-toggle="collapse"
-                data-target="#navbarCollapse"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div id="navbarCollapse" class="collapse navbar-collapse">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <router-link
-                            class="nav-link"
-                            data-toggle="collapse"
-                            :to="{ name: 'qr' }"
-                        >
-                            QR
-                        </router-link>
-                    </li>
-
-                    <li class="nav-item">
-                        <router-link
-                            class="nav-link"
-                            data-toggle="collapse"
-                            :to="{ name: 'login' }"
-                        >
-                            Login
-                        </router-link>
-                    </li>
-                </ul>
-            </div>
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item text-center">
+                    <router-link :to="{ name: 'qr' }" class="navbar-brand">
+                        QR Code content app
+                    </router-link>
+                </li>
+            </ul>
         </nav>
 
         <div class="container">
-            <router-view></router-view>
+            <div class="row justify-content-md-center">
+                    <router-view></router-view>
+            </div>
         </div>
     </div>
 </template>
@@ -47,7 +23,3 @@ export default {
     name: "App"
 }
 </script>
-
-<style scoped>
-
-</style>

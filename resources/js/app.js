@@ -7,6 +7,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue').default;
+Vue.component('ErrorList', require('./Components/ErrorList.vue').default)
 
 import router from './router';
 import App from './Layouts/App.vue';
