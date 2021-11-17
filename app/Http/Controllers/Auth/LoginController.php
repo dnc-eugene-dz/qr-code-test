@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
 class LoginController extends Controller
 {
-    public function authenticate(LoginRequest $request)
+    public function authenticate(LoginRequest $request): JsonResponse
     {
         $credentials = $request->only(['email','password']);
 
@@ -30,7 +31,7 @@ class LoginController extends Controller
             ], 422);
     }
 
-    public function logout(Request $request)
+    public function logout(Request $request): JsonResponse
     {
         Auth::guard('web')->logout();
         $request->session()->invalidate();

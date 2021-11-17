@@ -10,12 +10,12 @@ use App\Repositories\QRCode\QRCodeRepositoryInterface;
 class QRCodeController extends Controller
 {
     /**
-     * @var \App\Repositories\QRCode\QRCodeRepositoryInterface
+     * @var QRCodeRepositoryInterface
      */
     private QRCodeRepositoryInterface $QRCodeRepository;
 
     /**
-     * @param \App\Repositories\QRCode\QRCodeRepositoryInterface $QRCodeRepository
+     * @param QRCodeRepositoryInterface $QRCodeRepository
      */
     public function __construct(
         QRCodeRepositoryInterface $QRCodeRepository
@@ -23,7 +23,7 @@ class QRCodeController extends Controller
         $this->QRCodeRepository = $QRCodeRepository;
     }
 
-    public function generate(QRCodeRequest $request)
+    public function generate(QRCodeRequest $request): string
     {
         $result = $this->QRCodeRepository->create($request);
         return base64_encode($result->getString());
