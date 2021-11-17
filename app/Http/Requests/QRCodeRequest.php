@@ -35,16 +35,27 @@ class QRCodeRequest extends FormRequest implements CreateQRModelInterface
         return (int) $this->input('size');
     }
 
+    /**
+     * Convert alpha value from css (0..1) to GD format (0..127)
+     *
+     * @param float $a
+     * @return int
+     */
+    private function convertAlpha(float $a): int
+    {
+        return (127 - intval($a * 127));
+    }
+
     public function getFillColor(): ColorInterface
     {
         $colorArray = $this->input('fill_color');
-        return  new Color($colorArray['r'], $colorArray['g'], $colorArray['b'], $colorArray['a']);
+        return  new Color($colorArray['r'], $colorArray['g'], $colorArray['b'], $this->convertAlpha($colorArray['a']));
     }
 
     public function getBackgroundColor(): ColorInterface
     {
         $colorArray = $this->input('background_color');
-        return  new Color($colorArray['r'], $colorArray['g'], $colorArray['b'], $colorArray['a']);
+        return  new Color($colorArray['r'], $colorArray['g'], $colorArray['b'], $this->convertAlpha($colorArray['a']));
     }
 
     public function getQRContent(): string
