@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Repositories\QRCode;
+namespace App\Services\QRCode;
 
 use App\Http\Requests\Contracts\CreateQRModelInterface;
 use Endroid\QrCode\Builder\Builder;
@@ -12,13 +12,13 @@ use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeNone;
 use Endroid\QrCode\Writer\PngWriter;
 use Endroid\QrCode\Writer\Result\ResultInterface;
 
-class QRCodeRepository implements QRCodeRepositoryInterface
+class QRGeneratorService implements QRGeneratorServiceInterface
 {
 
     /**
      * @param CreateQRModelInterface $model
      */
-    public function create(CreateQRModelInterface $model): ResultInterface
+    public function generate(CreateQRModelInterface $model): ResultInterface
     {
         return Builder::create()
             ->writer(new PngWriter())

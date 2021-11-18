@@ -5,27 +5,27 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Requests\QRCodeRequest;
-use App\Repositories\QRCode\QRCodeRepositoryInterface;
+use App\Services\QRCode\QRGeneratorServiceInterface;
 
 class QRCodeController extends Controller
 {
     /**
-     * @var QRCodeRepositoryInterface
+     * @var QRGeneratorServiceInterface
      */
-    private QRCodeRepositoryInterface $qrCodeRepository;
+    private QRGeneratorServiceInterface $qrGeneratorService;
 
     /**
-     * @param QRCodeRepositoryInterface $qrCodeRepository
+     * @param QRGeneratorServiceInterface $qrGeneratorService
      */
     public function __construct(
-        QRCodeRepositoryInterface $qrCodeRepository
+        QRGeneratorServiceInterface $qrGeneratorService
     ) {
-        $this->qrCodeRepository = $qrCodeRepository;
+        $this->qrGeneratorService = $qrGeneratorService;
     }
 
     public function generate(QRCodeRequest $request): string
     {
-        $result = $this->qrCodeRepository->create($request);
+        $result = $this->qrGeneratorService->generate($request);
         return base64_encode($result->getString());
     }
 }
