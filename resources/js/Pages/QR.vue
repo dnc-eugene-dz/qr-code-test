@@ -21,7 +21,7 @@
                                 >
                                 <error-list :errors="errors['content']"></error-list>
                             </div>
-                            <label for="size">Size</label>
+                            <label for="size">Size, px</label>
                             <div class="form-group">
                                 <input
                                     type="number"

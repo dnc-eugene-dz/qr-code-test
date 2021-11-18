@@ -12,20 +12,20 @@ class QRCodeController extends Controller
     /**
      * @var QRCodeRepositoryInterface
      */
-    private QRCodeRepositoryInterface $QRCodeRepository;
+    private QRCodeRepositoryInterface $qrCodeRepository;
 
     /**
-     * @param QRCodeRepositoryInterface $QRCodeRepository
+     * @param QRCodeRepositoryInterface $qrCodeRepository
      */
     public function __construct(
-        QRCodeRepositoryInterface $QRCodeRepository
+        QRCodeRepositoryInterface $qrCodeRepository
     ) {
-        $this->QRCodeRepository = $QRCodeRepository;
+        $this->qrCodeRepository = $qrCodeRepository;
     }
 
     public function generate(QRCodeRequest $request): string
     {
-        $result = $this->QRCodeRepository->create($request);
+        $result = $this->qrCodeRepository->create($request);
         return base64_encode($result->getString());
     }
 }
